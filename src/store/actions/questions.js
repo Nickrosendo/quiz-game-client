@@ -1,19 +1,23 @@
 import { showToast } from './appStatus'
-import { fetchQuestions, postNewQuestionData, postQuestionData, deleteQuestionData } from '../../data/questions'
-import { deleteUserQuestionData, postUserQuestionData, postNewUserQuestionData, fetchUserQuestionsData } from '../../data/userQuestions'
+import { postNewQuestionData, postQuestionData, deleteQuestionData } from '../../data/questions'
+import { deleteUserQuestionData, postUserQuestionData, postNewUserQuestionData } from '../../data/userQuestions'
 import { separateQuestionsByCategory, parseQuestionServerData } from '../mappers/questions'
 import { findById } from '../../utils/dataUtils'
 import { getCookie } from '../../features/Cookies'
 import { showForm, hideForm } from './form'
+import axios from 'axios'
 
 export const UPDATE_QUESTIONS_LIST = 'UPDATE_QUESTIONS_LIST'
 export const ADD_NEW_QUESTION      = 'ADD_NEW_QUESTION'
 export const DELETE_QUESTION       = 'DELETE_QUESTION'
 export const UPDATE_QUESTION       = 'UPDATE_QUESTION'
 
-export const getQuestionsList = (id) => (dispatch) => {
-  switchUserTypeAction(fetchUserQuestionsData, fetchQuestions)(id)
-    .then(questions => dispatch(updateQuestionsList(separateQuestionsByCategory(questions))))
+export const getQuestionsList = () => (dispatch) => {
+  axios.get('http://localhost:8000/questions')
+    .then(({ data }) => {
+      // console.log('data: ', data)
+      return dispatch(updateQuestionsList(separateQuestionsByCategory(data)))
+    })
     .catch(error => dispatch(showToast(error)))
 }
 

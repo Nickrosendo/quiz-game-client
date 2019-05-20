@@ -38,7 +38,7 @@ class ScoreCounter extends PureComponent {
     if (mode !== 'test') {
       return (
         <div className={conditionClass(started, Style.box, Style.hidden)}>
-          <div className={Style.score}>{`Poprawnych: ${score}/${counter}`}</div>
+          <div className={Style.score}>{`Pontuação: ${score}/${counter}`}</div>
         </div>
       )
     } else {

@@ -21,11 +21,9 @@ export const separateQuestionsByCategory = (questions = []) => {
   })
 }
 
-export const parseQuestionServerData = ({ _id, question, answers, correct, user, category }) => ({
-  id: _id,
+export const parseQuestionServerData = ({ question, answers, correct, category }) => ({
   question,
   category,
   answers,
-  correct,
-  user,
+  correct
 })

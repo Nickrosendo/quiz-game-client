@@ -4,13 +4,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 @import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 
-@import './views/AdminPanel/adminPanel';
 @import './views/App/app';
 @import './views/Homepage/homepage';
 @import './views/Test/test';
 @import './views/Training/training';
 @import './views/Login/login';
-@import './views/PrivacyPolicy/privacypolicy.scss';
 
 @import './components/Button/button';
 @import './components/Loader/loader';

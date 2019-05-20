@@ -3,7 +3,6 @@ import { withRouter, Switch, Route } from 'react-router-dom'
 import Homepage from '../../views/Homepage/Homepage'
 import Training from '../../views/Training/Training'
 import Test from '../../views/Test/Test'
-import AdminPanel from '../../views/AdminPanel/AdminPanel'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 const Routes = [ {
@@ -18,11 +17,8 @@ const Routes = [ {
   path:      '/test',
   component: Test,
   exact:     false,
-}, {
-  path:      '/admin',
-  component: AdminPanel,
-  exact:     false,
-} ]
+} 
+]
 
 const timeout = { enter: 600, exit: 0 }
 /* eslint-disable react/prop-types */

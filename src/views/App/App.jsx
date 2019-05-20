@@ -8,7 +8,6 @@ import Toast from '../../components/Toast/Toast'
 import Router from '../../components/Router/Router'
 import Navigation from '../../components/Navigation/Navigation'
 import { getCookie } from '../../features/Cookies'
-import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy'
 
 const Style = {
   app: 'app',
@@ -16,13 +15,6 @@ const Style = {
 
 /** */
 const App = () => {
-  if (window.location.href.includes('/privacy')) {
-    return (
-      <div className={ Style.app }>
-        <PrivacyPolicy />
-      </div>
-    )
-  }
   if (!getCookie('token')) {
     return (
       <div className={ Style.app }>
@@ -31,6 +23,7 @@ const App = () => {
       </div>
     )
   }
+
   return (
     <BrowserRouter basename={ process.env.PUBLIC_URL }>
       <div className={ Style.app }>

@@ -32,47 +32,17 @@ class Homepage extends PureComponent {
     return (
       <div className={ Style.homepage }>
         <div className={ joinClasses(Style.info, Style.animation) }>
-          <h3>Front-end:</h3>
-          <br />
-          <ul>
-            <li>React</li>
-            <li>Redux</li>
-          </ul>
-          <br />
-          <span>Repozytorium:</span>
-          <ul>
-            <li><a href="https://github.com/KDunin/quiz-app">https://github.com/KDunin/quiz-app</a></li>
-          </ul>
-          <br />
-          <span>Hosting: </span>
-          <ul>
-            <li><a href="https://pages.github.com/">https://pages.github.com/</a></li>
-          </ul>
-          <br />
-          <h3>Back-end:</h3>
-          <br />
-          <ul>
-            <li>Express</li>
-            <li>Mongodb</li>
-          </ul>
-          <br />
-          <span>Repozytorium:</span>
-          <ul>
-            <li><a href="https://github.com/KDunin/quiz-backend">https://github.com/KDunin/quiz-backend</a></li>
-          </ul>
-          <br />
-          <span>Hosting:</span>
-          <ul>
-            <li><a href="https://www.heroku.com/">https://www.heroku.com/</a></li>
-            <li><a href="https://mlab.com/">https://mlab.com/</a></li>
-          </ul>
-        </div>
-        <div className={ Style.copyrights }>
-          <div className={ Style.contact }>
-            <i onClick={ () => this.copyToClipboard('669363935') } className="fas fa-phone"></i>
-            <i onClick={ () => this.copyToClipboard('duninwasowiczk@gmail.com') } className="far fa-envelope"></i>
-            <a href="https://github.com/KDunin" target="blank"><i className="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/krzysztof-dunin-w%C4%85sowicz-770781159" target="blank"><i className="fab fa-linkedin-in"></i></a>
+          <h1 style={{ textAlign: 'center' }}> Ranking de vitórias </h1>
+          <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 20, width: "100%", marginTop: 20, background: "#eee", borderRadius: 12 , color: "#aaa" }}>
+              <span> 1 - Nicolas </span> <span>  5 vitórias </span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 20, width: "100%", marginTop: 20, background: "#eee", borderRadius: 12 , color: "#aaa" }}>
+              <span> 2 - Bruno </span> <span>  4 vitórias </span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 20, width: "100%", marginTop: 20, background: "#eee", borderRadius: 12 , color: "#aaa" }}>
+              <span> 3 - Edgar </span> <span>  3 vitórias </span>
+            </div>
           </div>
         </div>
       </div>

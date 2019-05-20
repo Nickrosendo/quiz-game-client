@@ -86,9 +86,9 @@ class QuestionBox extends Component {
     if (!timer && started && !answer) {
       return (
         <div className={joinClasses(Style.box, Style.expired)}>
-          <div className={Style.text}>Czas upłynął</div>
+          <div className={Style.text}>O tempo acabou</div>
           <Button
-            text='Następne pytanie'
+            text='próxima pergunta'
             onClick={onTimeExpire}
           />
         </div>

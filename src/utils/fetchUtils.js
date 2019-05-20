@@ -1,14 +1,15 @@
 import { isDefined } from './typeUtils'
 import { getCookie } from '../features/Cookies'
+import axios from 'axios'
 
 const SERVER_ADDRESS = 'https://quiz-app-backend.herokuapp.com/api/'
 
-const METHOD_GET    = 'GET'
+// const METHOD_GET    = 'GET'
 const METHOD_POST   = 'POST'
 const METHOD_PATCH  = 'PATCH'
 const METHOD_DELETE = 'DELETE'
 
-const MODE_CORS = 'cors'
+// const MODE_CORS = 'cors'
 // const AUTHORIZATION = `Bearer ${getCookie('token')}`
 
 const CONTENT_TYPE_JSON = 'application/json'
@@ -19,14 +20,8 @@ export const STATUS_NOT_FOUND     = 404
 export const STATUS_UNPROCESSABLE = 422
 export const STATUS_INTERNAL      = 500
 
-export const fetchGet = (url) => fetch(getFullUrl(url), {
-  method:  METHOD_GET,
-  mode:    MODE_CORS,
-  headers: {
-    'Content-Type':  CONTENT_TYPE_JSON,
-    'Authorization': `Bearer ${getCookie('token')}`,
-  },
-}).then((response) => handleResponse(response))
+export const fetchGet = (url) => 
+  axios.get(url).then(({ data }) => data)
 
 export const fetchPost = (url, data) => fetch(getFullUrl(url), {
   method:  METHOD_POST,

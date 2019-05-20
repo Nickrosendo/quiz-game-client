@@ -1,6 +1,6 @@
 import { fetchGet, fetchPost, fetchPatch, fetchDelete } from "../utils/fetchUtils"
 
-const QUESTIONS_URL = 'questions'
+const QUESTIONS_URL = 'http://localhost:8000/questions'
 
 export const fetchQuestions = () => fetchGet(QUESTIONS_URL)
 export const postNewQuestionData = (id, data) => fetchPost(QUESTIONS_URL, data)

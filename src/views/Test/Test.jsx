@@ -12,7 +12,7 @@ import { conditionClass } from '../../utils/classUtils'
 
 const QUESTIONS_NUMBER = 10
 export const TEST      = 'test'
-const RULES            = 'W trybie testowym, musisz odpowiedzieć na 10 pytań, za każdą poprawną odpowiedź otrzymujesz punkt, czas na udzielenie odpowiedzi jest ograniczony i zależy od wybranego poziomu trudności.'
+const RULES            = 'A regra nesse modo de jogo é responder às perguntas no menor tempo possível. O jogador com mais acertos será o vencedor.'
 
 const Style = {
   test:      'test',
@@ -83,7 +83,9 @@ class Test extends Component {
   }
 
   handleStart() {
-    const { questions, question } = this.state
+    console.log('props: ', this.state.category)
+    const { question } = this.state
+    const questions = this.props.questions[this.state.category]
     const { onTimerStart } = this.props
     this.setState(Object.assign({ started: true }, setItemsToRender(questions, question)), onTimerStart)
   }
@@ -97,6 +99,8 @@ class Test extends Component {
   
   handleChange({ target }) {
     const { name, value } = target
+    console.log('target: ', value, ' name: ', name)
+    debugger;
     if (name === 'category') {
       this.setState({ [name]: value })
       this.drawRandomQuestions(value)
@@ -116,8 +120,8 @@ class Test extends Component {
       const question = questions[category][randomNumber(questions[category].length)]
       if (!randomQuestions.includes(question)) {
         randomQuestions.push(question)
-        i++
       }
+      i++
     }
     this.setState({ questions: randomQuestions }) 
   }
@@ -128,7 +132,7 @@ class Test extends Component {
     if (summary) {
       return (
         <span className={Style.score}>
-          TWÓJ WYNIK TO {score.filter(item => item).length}
+          Seu Resultado {score.filter(item => item).length}
         </span>
       )
     }
@@ -142,6 +146,21 @@ class Test extends Component {
           onChange={this.handleChange}
         />
         <div className={conditionClass(started, Style.animation, Style.hidden)}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
+            <div style={{ width: 150, height: 100, borderRadius: 12, background: "#191919", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+              <div style={{ width: 50, height: 50, borderRadius: "100%", background: "#fff", color: "#191919", fontSize: 25, marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600 }}>
+                <span>NR</span>
+              </div>
+              <p>1 acerto(s)</p>
+            </div>
+            <span style={{ margin: "0 10px", display: "inline-block" }}> X </span>
+            <div style={{ width: 150, height: 100, borderRadius: 12, background: "#191919", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+              <div style={{ width: 50, height: 50, borderRadius: "100%", background: "#fff", color: "#191919", fontSize: 25, marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600 }}>
+                <span>P2</span>
+              </div>
+              <p>3 acerto(s)</p>
+            </div>
+          </div>
           <ScoreCounter
             started={started}
             counter={counter}
@@ -167,6 +186,13 @@ class Test extends Component {
       </div>
     )
   }
+  // render() {
+  //   return (
+  //     <div>
+  //       TESTE
+  //     </div>
+  //   )
+  // }
 }
 
 export default connect(mapStoreToProps, mapDispatchToProps)(Test)
@@ -189,6 +215,7 @@ Test.propTypes = {
 }
 
 const setItemsToRender = (questions, question) => {
+  console.log('questions: ', questions)
   const itemToRender = questions.filter(item => item.question !== question)[randomNumber(questions.length - 1)]
   const newQuestions = questions.filter(item => item !== itemToRender)
   return {

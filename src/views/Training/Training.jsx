@@ -9,7 +9,7 @@ import { randomNumber } from '../../utils/numberUtils'
 import { conditionClass } from '../../utils/classUtils'
 
 export const TRAINING = 'training'
-const RULES = 'W trybie treningowy, czas na odpowiedź jest nieograniczony, po wybraniu błędniej odpowiedzi, zostanie podświetlona rownież prawidłowa odpowiedź.'
+const RULES = 'Esse modo de jogo é focado em praticar para o modo disputa, nesse modo não há limite de tempo para responder as perguntas.'
 
 const Style = {
   training:  'training',

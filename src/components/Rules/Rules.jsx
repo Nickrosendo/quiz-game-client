@@ -28,7 +28,7 @@ class Rules extends Component {
       <div className={Style.selects}>
         <div className={Style.select}>
           <label htmlFor='category'>
-            Kategoria
+            Categorias
           </label>
           <select
             id='category'
@@ -36,17 +36,17 @@ class Rules extends Component {
             onChange={onChange}
             className={Style.list}
           >
-            <option value='All'>Wszystkie</option>
-            <option value='Cinema'>Filmy i seriale</option>
-            <option value='Computers'>Komputery</option>
-            <option value='Games'>Gry</option>
-            <option value='Sport'>Sport</option>
-            <option value='World'>Świat</option>
+            <option value='All'>Todos</option>
+            <option value='Cinema'>Cinema</option>
+            <option value='Computers'>Computação</option>
+            <option value='Games'>Games</option>
+            <option value='Sport'>Esportes</option>
+            <option value='World'>Conhecimentos gerais</option>
           </select>
         </div>
         <div className={Style.select}>
           <label htmlFor='level'>
-            Poziom trudności
+            Nível de dificuldade
           </label>
           <select
             id='level'
@@ -54,9 +54,9 @@ class Rules extends Component {
             onChange={onChange}
             className={Style.list}
           >
-            <option value='1'>Łatwy</option>
-            <option value='2'>Średni</option>
-            <option value='3'>Trudny</option>
+            <option value='1'>Fácil</option>
+            <option value='2'>Intermediário</option>
+            <option value='3'>Avançado</option>
           </select>
         </div>
       </div>
@@ -70,11 +70,11 @@ class Rules extends Component {
         <div className={Style.rules}>
           {rules}
         </div>
-        {this.renderCategoryAndLevelSelect(mode, onChange)}
+        {this.renderCategoryAndLevelSelect(mode, onChange)}                
         <Button 
           className={Style.button}
           onClick={onClick}
-          text='Start'
+          text='Iniciar'
         />
       </div>
     )
