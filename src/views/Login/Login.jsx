@@ -35,7 +35,6 @@ class Login extends PureComponent {
     this.handleChange = this.handleChange.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
-    this.handleGuestSignIn = this.handleGuestSignIn.bind(this);
     this.renderError = this.renderError.bind(this);
   }
 
@@ -48,11 +47,6 @@ class Login extends PureComponent {
     if ((!email || !password) && error) {
       return <div className={Style.error}>Usuário inválido</div>;
     }
-  }
-
-  handleGuestSignIn(e) {
-    e.preventDefault();
-    this.props.onLogIn("user", "user");
   }
 
   handleSignIn(e) {
@@ -95,7 +89,7 @@ class Login extends PureComponent {
               <span>
                 {" "}
                 <input
-                  checked
+                  checked={this.state.type === "login"}
                   name="type"
                   type="radio"
                   value={"login"}
@@ -106,6 +100,7 @@ class Login extends PureComponent {
               <span>
                 {" "}
                 <input
+                  checked={this.state.type === "cadastro"}
                   name="type"
                   type="radio"
                   value={"cadastro"}
@@ -199,17 +194,6 @@ class Login extends PureComponent {
                 />
               )}
             </div>
-            {this.state.type === "login" ? (
-              <div className={Style.buttons}>
-                <Button
-                  className={Style.button}
-                  onClick={this.handleGuestSignIn}
-                  text="Entrar como visitante"
-                  type="button"
-                  disabled={loading}
-                />
-              </div>
-            ) : null}
           </form>
           <Loader loading={loading} />
         </div>

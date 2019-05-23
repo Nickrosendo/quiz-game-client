@@ -62,7 +62,7 @@ export const userSignUp = (email, password, c_password, name) => dispatch => {
   axios
     .post(
       `${API_URL}/api/register`,
-      { email, password, c_password, name },
+      { email, password, c_password, name, wins: 0 },
       {
         headers: {
           "Content-Type": "application/json"
@@ -81,17 +81,6 @@ export const userSignUp = (email, password, c_password, name) => dispatch => {
       dispatch(showToast(error));
     });
 
-  // postNewUserCredentials({ username, password })
-  //   .then(() => {
-  //     dispatch(
-  //       showToast({ message: "Konto utworzone, możesz się zalogować!" })
-  //     );
-  //     dispatch(hideLoader());
-  //   })
-  //   .catch(error => {
-  //     dispatch(showToast(error));
-  //     dispatch(hideLoader());
-  //   });
 };
 
 export const googleSignIn = (email, token) => dispatch => {
