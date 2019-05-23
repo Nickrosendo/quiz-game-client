@@ -37,26 +37,8 @@ class Rules extends Component {
             className={Style.list}
           >
             <option value='All'>Todos</option>
-            <option value='Cinema'>Cinema</option>
             <option value='Computers'>Computação</option>
-            <option value='Games'>Games</option>
-            <option value='Sport'>Esportes</option>
             <option value='World'>Conhecimentos gerais</option>
-          </select>
-        </div>
-        <div className={Style.select}>
-          <label htmlFor='level'>
-            Nível de dificuldade
-          </label>
-          <select
-            id='level'
-            name='level'
-            onChange={onChange}
-            className={Style.list}
-          >
-            <option value='1'>Fácil</option>
-            <option value='2'>Intermediário</option>
-            <option value='3'>Avançado</option>
           </select>
         </div>
       </div>

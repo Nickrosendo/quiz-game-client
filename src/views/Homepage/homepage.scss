@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: space-between;
   height: calc(100vh - 65px);
+  overflow-y: auto;
+  padding-bottom: 15px;
 
   &__info {
     width: 50%;

@@ -12,4 +12,25 @@
   &__hidden {
     display: none;
   }
+
+  &__button {
+    flex: 1 1 40%;
+    margin: 10px;
+    padding: 6px 26px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.1rem;
+    border: 0;
+    border-radius: 3px;
+    background-color: #5a8baf;
+    transition: background-color 0.2s linear;
+
+    &:disabled {
+      background-color: $fourth-color;
+    }
+
+    &:hover {
+      box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3)
+    }
+  }
 }

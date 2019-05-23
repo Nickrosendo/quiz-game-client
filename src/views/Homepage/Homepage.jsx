@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { joinClasses } from '../../utils/classUtils'
 import { mapDispatchToProps } from './storeHelper'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 const Style = {
   homepage:   'homepage',
@@ -12,10 +13,24 @@ const Style = {
   animation:  'animation-fade-in',
 }
 class Homepage extends PureComponent {
+  
+  state = {
+    leaderboards: []
+  }
   constructor() {
     super()
 
     this.copyToClipboard = this.copyToClipboard.bind(this)
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:8000/api/leaderboard').then(({ data }) => {
+      this.setState({ leaderboards: data})
+      console.log("leaderboards: ", this.state.leaderboards);
+    })
+    .catch(error => {
+      console.error('error at getting leaderboards: ', error)
+    })
   }
 
   copyToClipboard = str => {
@@ -34,15 +49,13 @@ class Homepage extends PureComponent {
         <div className={ joinClasses(Style.info, Style.animation) }>
           <h1 style={{ textAlign: 'center' }}> Ranking de vitórias </h1>
           <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 20, width: "100%", marginTop: 20, background: "#eee", borderRadius: 12 , color: "#aaa" }}>
-              <span> 1 - Nicolas </span> <span>  5 vitórias </span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 20, width: "100%", marginTop: 20, background: "#eee", borderRadius: 12 , color: "#aaa" }}>
-              <span> 2 - Bruno </span> <span>  4 vitórias </span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 20, width: "100%", marginTop: 20, background: "#eee", borderRadius: 12 , color: "#aaa" }}>
-              <span> 3 - Edgar </span> <span>  3 vitórias </span>
-            </div>
+            {
+              this.state.leaderboards.sort((a,b) => b.wins - a.wins ).map( (user, index) => (
+                <div key={user.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 20, width: "100%", marginTop: 20, background: "#eee", borderRadius: 12 , color: "#aaa" }}>
+                  <span> { index } - {user.name} </span> <span>  {user.wins} vitórias </span>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>

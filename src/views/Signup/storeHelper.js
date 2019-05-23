@@ -5,8 +5,8 @@ export const mapStoreToProps = ({ appStatus }) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  onLogIn:         (email, password) => dispatch(userLogIn(email, password)),
-  onSignUp:        (email, password, c_password, name) => dispatch(userSignUp(email, password, c_password, name)),
+  onLogIn:         (username, password) => dispatch(userLogIn(username, password)),
+  onSignUp:        (username, password, name) => dispatch(userSignUp(username, password, name)),
   onGoogleLogIn:   (email, token) => dispatch(googleSignIn(email, token)),
   onFacebookLogIn: (id, email) => dispatch(facebookSignIn(id, email)),
   throwError:      (message) => dispatch(showToast({ message })),

@@ -13,7 +13,7 @@ export const DELETE_QUESTION       = 'DELETE_QUESTION'
 export const UPDATE_QUESTION       = 'UPDATE_QUESTION'
 
 export const getQuestionsList = () => (dispatch) => {
-  axios.get('http://localhost:8000/questions')
+  axios.get('http://localhost:8000/api/questions')
     .then(({ data }) => {
       // console.log('data: ', data)
       return dispatch(updateQuestionsList(separateQuestionsByCategory(data)))

@@ -86,6 +86,7 @@ Trening.propTypes = {
 
 const setItemsToRender = (questions, question) => {
   const itemToRender = questions.filter(item => item.question !== question)[randomNumber(questions.length - 1)]
+  console.log("item: ", itemToRender)
   
   return {
     question: itemToRender.question,

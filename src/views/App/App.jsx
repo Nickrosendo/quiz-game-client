@@ -8,13 +8,16 @@ import Toast from '../../components/Toast/Toast'
 import Router from '../../components/Router/Router'
 import Navigation from '../../components/Navigation/Navigation'
 import { getCookie } from '../../features/Cookies'
+import { updateAppStatus } from '../../store/actions/appStatus'
+import axios from 'axios'
 
 const Style = {
   app: 'app',
 }
 
 /** */
-const App = () => {
+const App = (props) => {
+  
   if (!getCookie('token')) {
     return (
       <div className={ Style.app }>
@@ -35,7 +38,7 @@ const App = () => {
   )
 }
 
-export default connect(mapStoreToProps)(App)
+export default connect(mapStoreToProps, { updateAppStatus } )(App)
 
 App.propTypes = {
   /** */
